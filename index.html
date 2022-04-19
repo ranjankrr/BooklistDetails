@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>liberay Book</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Enter Book</h1>
+            <input type="text" id="title" placeholder="Enter Your Book Title">
+            <input type="text" id="author" placeholder="Enter Book Author"/>
+            <input type="text" id="price" placeholder="Enter Book price">
+
+            <button id="subBtn">Submit</button>
+       </div>
+
+       <div class="sub-container">
+           <h1>Book Deatils</h1>
+           <ul id="list">
+               
+           </ul>
+       </div>
+
+       <script>
+           let submit =document.getElementById("subBtn");
+           submit.addEventListener("click", ()=>{
+               let title = document.getElementById("title").value;
+               let author = document.getElementById("author").value;
+               let price = document.getElementById("price").value;
+               
+               let list =document.getElementById("list");
+               let li = document.createElement("li");
+              
+                li.innerHTML=
+                             `
+                             <p><b style='color:black'>Title:</b> ${title}</p>
+                             <p><b style='color:black'>Author:</b> ${author}</p>
+                             <p><b style='color:black'>Price:</b> ${price}</p>
+                             `
+                             li.style.cssText ="list-style:none";
+                            
+               list.appendChild(li);
+               let delt = document.createElement("button");
+               delt.innerHTML="x";
+               li.appendChild(delt);
+               
+
+               document.getElementById("title").value="";
+               document.getElementById("author").value="";
+               document.getElementById("price").value="";
+               if(!title ||!author ||!price){
+                    alert("please filled all boxes");
+                }
+           })
+
+           let ul = document.querySelector("ul");
+           ul.addEventListener("click", (e)=>{
+            let list =document.getElementById("list");
+            let li = e.target.parentNode;
+            list.removeChild(li);
+           })
+       </script>
+    </body>
+</html>
